@@ -9,11 +9,13 @@
 <body>
     <div id="header-placeholder"></div>
 
-    <main style="padding-top: 150px;">
+    <main style="padding-top: 140px;">
         <section class="section">
             <div class="reveal" style="max-width: var(--container-max); margin: 0 auto 50px;">
                 <h2 style="font-size: 3.2rem;">Laten we <span style="color:var(--accent)">kennismaken.</span></h2>
-                <p style="opacity: 0.7;">Ferdinand Bolplein 9, Maassluis. Gratis parkeren voor de deur.</p>
+                <p style="opacity: 0.7; font-size: 1.1rem;">
+                    Ferdinand Bolplein 9, 3141GB Maassluis <strong>(Gratis parkeren)</strong>
+                </p>
             </div>
 
             <div class="centered-container contact-layout reveal">
@@ -27,15 +29,15 @@
                     <form action="https://formspree.io/f/jouw-id" method="POST">
                         <div class="f-group">
                             <label>Je Naam *</label>
-                            <input type="text" name="name" placeholder="Naam" required>
+                            <input type="text" name="name" required>
                         </div>
                         <div class="f-group">
                             <label>E-mailadres *</label>
-                            <input type="email" name="email" placeholder="e-mailadres" required>
+                            <input type="email" name="email" required>
                         </div>
                         <div class="f-group">
                             <label>Bericht *</label>
-                            <textarea name="message" placeholder="Jouw vraag of bericht..." required style="height: 150px;"></textarea>
+                            <textarea name="message" required style="height: 150px;"></textarea>
                         </div>
                         <input type="text" name="_gotcha" style="display:none">
                         <button type="submit" class="btn" style="width: 100%;">Verstuur bericht</button>
