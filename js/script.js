@@ -1,18 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Laad componenten
     loadComponent('header', 'header-placeholder');
     loadComponent('footer', 'footer-placeholder');
-    
-    // Initialiseer animaties
     initAnimations();
     
-    // Cookie check
-    if (!localStorage.getItem('cookieConsent')) {
-        setTimeout(() => {
-            const banner = document.getElementById('cookie-banner');
-            if(banner) banner.style.display = 'flex';
-        }, 2000);
-    }
+    // Header effect op scroll
+    window.addEventListener('scroll', () => {
+        const header = document.getElementById('site-header');
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
 });
 
 async function loadComponent(name, id) {
@@ -21,21 +20,20 @@ async function loadComponent(name, id) {
         const data = await response.text();
         document.getElementById(id).innerHTML = data;
         if(name === 'header') initMobileMenu();
-    } catch (err) {
-        console.error(`Fout bij laden van ${name}:`, err);
-    }
+    } catch (err) { console.error(err); }
 }
 
 function initAnimations() {
+    // We kijken naar verschillende reveal types
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
             }
         });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-zoom').forEach(el => observer.observe(el));
 }
 
 function initMobileMenu() {
@@ -47,9 +45,4 @@ function initMobileMenu() {
             burger.classList.toggle('toggle');
         });
     }
-}
-
-function acceptCookies() {
-    localStorage.setItem('cookieConsent', 'true');
-    document.getElementById('cookie-banner').style.display = 'none';
 }
