@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Zosia Valstar Therapie</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <main style="padding-top: var(--header-h);">
+        <section class="section">
+            <div class="contact-grid">
+                <div class="reveal">
+                    <h2 class="massive-title">Kennismaken?</h2>
+                    <p>Heb je een vraag of wil je direct een afspraak inplannen? Ik hoor graag van je.</p>
+                    <br><br>
+                    <h4 class="text-accent">Locatie Maassluis</h4>
+                    <p>Ferdinand Bolplein 9<br>3141GB Maassluis<br><strong>(Gratis parkeren)</strong></p>
+                    <br>
+                    <h4 class="text-accent">E-mail</h4>
+                    <p>info@zosiavalstar.nl</p>
+                    <br>
+                    <div style="width: 100%; height: 250px; border-radius: var(--radius); overflow: hidden; margin-top: 30px;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2462.8364843997784!2d4.246476112520864!3d51.91866717178971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c4490f23f81e7d%3A0xc068869c99666014!2sFerdinand%20Bolplein%209%2C%203141%20GB%20Maassluis!5e0!3m2!1snl!2snl!4v1715600000000!5m2!1snl!2snl" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="form-card reveal">
+                    <form action="https://formspree.io/f/jouw-id" method="POST">
+                        <div class="f-group">
+                            <label>Naam *</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="f-group">
+                            <label>Email *</label>
+                            <input type="email" name="email" required>
+                        </div>
+                        <div class="f-group">
+                            <label>Bericht *</label>
+                            <textarea name="message" required style="height: 150px;"></textarea>
+                        </div>
+                        <!-- Honeypot -->
+                        <input type="text" name="_gotcha" style="display:none">
+                        <button type="submit" class="btn" style="width: 100%;">Bericht versturen</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="js/script.js"></script>
+</body>
+</html>
