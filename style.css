@@ -3,15 +3,17 @@
 
 :root {
     --bg: #F8FAF9;
-    --dark: #2D3632;
+    --dark: #2D3632;           /* Deep Charcoal Sage */
+    --footer-bg: #3A443F;      /* Iets lichtere variant voor footer */
     --sage: #8DA196;
     --sage-light: #E9EDEB;
-    --accent: #D4A373;
+    --accent: #D4A373;         /* Terra Accent */
     --white: #FFFFFF;
     --header-h: 90px;
     --radius-lg: 40px;
     --radius-md: 20px;
     --ease: cubic-bezier(0.23, 1, 0.32, 1);
+    --container-max: 1100px;   /* Voor de gecentreerde look */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -47,62 +49,50 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; font-weight: 800; line-height: 1
 .reveal { opacity: 0; transform: translateY(30px); transition: 1s var(--ease); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* --- HERO & CONTENT BLOCKS --- */
-.container-wide { width: 100%; padding: 0 4%; }
-.flex-split { display: flex; align-items: center; gap: 80px; min-height: 85vh; padding-top: 100px; }
-.flex-text { flex: 1; }
-.flex-image { flex: 1; display: flex; justify-content: flex-end; }
+/* --- LAYOUTS --- */
+.section { padding: 100px 5%; }
+.centered-container { 
+    max-width: var(--container-max); 
+    margin: 0 auto; 
+    display: flex; 
+    align-items: center; 
+    gap: 60px; 
+}
 
 .rounded-img { 
-    width: 100%; max-width: 532px; height: auto; 
+    width: 100%; max-width: 480px; height: auto; 
     border-radius: var(--radius-lg); 
-    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-    transition: 0.5s var(--ease);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.08);
 }
-.rounded-img:hover { transform: scale(1.02); }
 
-/* --- GRIDS --- */
-.section { padding: 100px 4%; }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-
-.info-card { 
-    background: var(--white); padding: 40px; border-radius: var(--radius-md); 
-    border: 1px solid var(--sage-light); transition: 0.4s;
+/* --- TARIEVEN (Elegante Kaarten) --- */
+.price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+.price-card {
+    background: var(--white); padding: 40px; border-radius: var(--radius-md);
+    border: 1px solid var(--sage-light); text-align: center; transition: 0.3s;
 }
-.info-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+.price-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+.price-tag { font-size: 2.5rem; font-weight: 800; color: var(--accent); margin: 20px 0; display: block; }
+.price-tag span { font-size: 1rem; font-weight: 400; color: var(--sage); }
 
 /* --- CONTACT PAGE --- */
-.contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
-.map-box { 
-    width: 100%; aspect-ratio: 1/1; border-radius: var(--radius-lg); 
-    overflow: hidden; border: 1px solid var(--sage-light);
-}
-.form-box { 
-    background: var(--white); padding: 50px; border-radius: var(--radius-lg); 
-    box-shadow: 0 20px 40px rgba(0,0,0,0.03);
-}
+.contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.map-box { border-radius: var(--radius-lg); overflow: hidden; height: 100%; min-height: 450px; }
+.form-box { background: var(--white); padding: 50px; border-radius: var(--radius-lg); }
 
-/* --- FORM ELEMENTS --- */
-.f-group { margin-bottom: 20px; }
-.f-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--sage); font-size: 0.8rem; text-transform: uppercase; }
-.f-group input, .f-group textarea {
-    width: 100%; padding: 16px; border: 1.5px solid var(--sage-light); border-radius: 15px;
-    font-family: inherit; font-size: 1rem; outline: none; transition: 0.3s;
+/* --- FOOTER (Nieuwe Kleur & Kolommen) --- */
+footer { background: var(--footer-bg); color: var(--white); padding: 80px 5% 40px; }
+.footer-inner { 
+    max-width: var(--container-max); margin: 0 auto; 
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px;
 }
-.f-group input:focus { border-color: var(--accent); }
-
-.btn {
-    display: inline-flex; background: var(--dark); color: white; padding: 18px 35px;
-    border-radius: 50px; text-decoration: none; font-weight: 700; border: none; cursor: pointer; transition: 0.3s;
-}
-.btn:hover { background: var(--accent); transform: scale(1.05); }
+.footer-col h4 { color: var(--accent); margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+.footer-col p, .footer-col a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.95rem; display: block; margin-bottom: 12px; }
+.footer-col a:hover { color: var(--white); }
 
 /* --- MOBILE --- */
 @media (max-width: 1024px) {
-    .flex-split, .grid-3, .grid-2, .contact-container { flex-direction: column; grid-template-columns: 1fr; gap: 40px; }
-    .flex-image { justify-content: center; }
-    #site-header { width: 92%; padding: 0 15px; }
-    .nav-links { display: none; } /* Hamburger nodig voor productie */
-    .flex-split { text-align: center; }
+    .centered-container, .contact-container, .footer-inner { flex-direction: column; grid-template-columns: 1fr; text-align: center; }
+    .rounded-img { max-width: 100%; }
+    .nav-links { display: none; }
 }
